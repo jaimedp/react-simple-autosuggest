@@ -1,4 +1,4 @@
-// var webpack = require('webpack');
+var webpack = require('webpack');
 var pkg = require('./package.json');
 var path = require('path');
 
@@ -18,5 +18,9 @@ module.exports = {
       { test: /\.jsx?$/, exclude: /node_modules/, loader: ['babel-loader'] }
     ]
   },
-  externals: ['react']
+  externals: ['react', 'prop-types'],
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+  ],
+  devtool: 'source-map'
 };
